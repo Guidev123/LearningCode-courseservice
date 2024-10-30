@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Courses.Data\Courses.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Endpoints\Modules\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace Courses.API.Endpoints
+﻿using Courses.API.Endpoints.Courses;
+
+namespace Courses.API.Endpoints
 {
     public static class Endpoint
     {
@@ -8,7 +10,9 @@
                 .MapGroup("");
 
             endpoints.MapGroup("api/courses")
-                .WithTags("Courses");
+                .WithTags("Courses")
+                .MapEndpoint<GetAllCoursesEndpoint>()
+                .MapEndpoint<CreateCourseEndpoint>();
         }
 
         private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app)

@@ -1,3 +1,4 @@
+using Courses.API.Endpoints;
 using Courses.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,5 +14,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapEndpoints();
 
 app.Run();

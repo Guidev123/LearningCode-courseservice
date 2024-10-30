@@ -13,13 +13,17 @@ namespace Courses.Core.Responses
         public Response(
             TData? data,
             int code = 200,
-            string? message = null)
+            string? message = null,
+            IEnumerable<string>? validationErrors = null)
         {
             Data = data;
             Message = message;
             _code = code;
+            ValidationErrors = validationErrors;
         }
 
+        [JsonPropertyName("Errors")]
+        public IEnumerable<string>? ValidationErrors { get; set; }
         public TData? Data { get; set; }
         public string? Message { get; set; }
 
