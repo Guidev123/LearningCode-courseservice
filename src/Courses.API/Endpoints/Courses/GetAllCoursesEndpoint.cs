@@ -3,6 +3,7 @@ using Courses.API.DTOs;
 using Courses.API.Middlewares;
 using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Responses;
+using Courses.Core.Responses.Messages;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Courses.API.Endpoints.Courses
@@ -16,10 +17,10 @@ namespace Courses.API.Endpoints.Courses
         {
             var courses = await courseRepository.GetAll(pageNumber, pageSize);
             if(courses is null)
-                return TypedResults.NotFound();
+                return TypedResults.NotFound(new Response<List<GetCourseDTO>>(null, 404, ResponseMessages.COURSE_NOT_FOUND.GetDescription()));
 
             var result = courses.Select(GetCourseDTO.MapFromEntity).ToList();
-            return TypedResults.Ok(result);
+            return TypedResults.Ok(new Response<List<GetCourseDTO>>(result, 200, ResponseMessages.VALID_OPERATION.GetDescription()));
         }
     }
 }

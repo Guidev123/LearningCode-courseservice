@@ -3,6 +3,7 @@ using Courses.API.DTOs;
 using Courses.Core.Entities;
 using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Responses;
+using Courses.Core.Responses.Messages;
 
 namespace Courses.API.Endpoints.Courses
 {
@@ -15,10 +16,10 @@ namespace Courses.API.Endpoints.Courses
         {
             var course = await courseRepository.GetById(id);
             if (course is null)
-                return TypedResults.NotFound();
+                return TypedResults.NotFound(new Response<GetCourseDTO>(null, 404, ResponseMessages.COURSE_NOT_FOUND.GetDescription()));
 
             var result = GetCourseDTO.MapFromEntity(course);
-            return TypedResults.Ok(result);
+            return TypedResults.Ok(new Response<GetCourseDTO>(result, 200, ResponseMessages.VALID_OPERATION.GetDescription()));
         }
 
     }
