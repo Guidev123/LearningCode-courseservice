@@ -10,7 +10,7 @@ namespace Courses.Data.Repositories
     public class UnitOfWork(CourseDbContext context) : IUnitOfWork
     {
         private readonly CourseDbContext _context = context;
-        public async Task<bool> Commit()
+        public async Task<bool> CommitAsync()
         {
             var ret = await _context.SaveChangesAsync();
             if (ret > 0)

@@ -8,7 +8,7 @@ namespace Courses.Core.Interfaces.Repositories
 {
     public interface IUnitOfWork
     {
-        Task<bool> Commit();
+        Task<bool> CommitAsync();
         Task<bool> Rollback();
     }
 }

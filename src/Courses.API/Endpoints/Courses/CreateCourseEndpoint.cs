@@ -17,7 +17,7 @@ namespace Courses.API.Endpoints.Courses
         {
             var result = await courseService.CreateAsync(courseDTO.MapToEntity(courseDTO));
 
-            return result.IsSuccess && await unitOfWork.Commit()
+            return result.IsSuccess && await unitOfWork.CommitAsync()
                                     ? TypedResults.Created()
                                     : TypedResults.BadRequest(result);
         }

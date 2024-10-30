@@ -6,20 +6,19 @@ using Courses.Core.Responses;
 
 namespace Courses.API.Endpoints.Courses
 {
-    public class UpdateCourseEndpoint : IEndpoint
+    public class DeleteCourseEndpoint : IEndpoint
     {
-        public static void Map(IEndpointRouteBuilder app) => app.MapPut("/{id:guid}", HandleAsync).Produces<Response<CourseDTO>>();
-    
+        public static void Map(IEndpointRouteBuilder app) => app.MapDelete("/{id:guid}", HandleAsync).Produces<Response<CourseDTO?>>();
+
         public static async Task<IResult> HandleAsync(ICourseService courseService,
                                                       IUnitOfWork unitOfWork,
-                                                      CourseDTO courseDTO,
                                                       Guid id)
         {
-            var result = await courseService.UpdateAsync(courseDTO.MapToEntity(courseDTO), id);
+            var result = await courseService.DeleteAsync(id);
 
-            return result.IsSuccess && await unitOfWork.CommitAsync()
+            return result.IsSuccess && await unitOfWork.CommitAsync() 
                                     ? TypedResults.NoContent()
-                                    : TypedResults.BadRequest(result);
+                                    : TypedResults.BadRequest();
         }
     }
 }

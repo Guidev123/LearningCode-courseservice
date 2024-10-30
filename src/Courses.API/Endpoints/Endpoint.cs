@@ -12,6 +12,9 @@ namespace Courses.API.Endpoints
             endpoints.MapGroup("api/courses")
                 .WithTags("Courses")
                 .MapEndpoint<GetAllCoursesEndpoint>()
+                .MapEndpoint<GetCourseByIdEndpoint>()
+                .MapEndpoint<DeleteCourseEndpoint>()
+                .MapEndpoint<UpdateCourseEndpoint>()
                 .MapEndpoint<CreateCourseEndpoint>();
         }
 

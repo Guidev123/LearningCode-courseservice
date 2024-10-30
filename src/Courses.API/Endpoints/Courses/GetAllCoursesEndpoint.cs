@@ -9,7 +9,7 @@ namespace Courses.API.Endpoints.Courses
 {
     public class GetAllCoursesEndpoint : IEndpoint
     {
-        public static void Map(IEndpointRouteBuilder app) => app.MapGet("/", HandleAsync).Produces<Response<List<GetAllCourseDTO>>?>();
+        public static void Map(IEndpointRouteBuilder app) => app.MapGet("/", HandleAsync).Produces<Response<List<GetCourseDTO>>?>();
         public static async Task<IResult> HandleAsync(ICourseRepository courseRepository,
                                                       [FromQuery] int pageNumber = ApplicationModule.DEFAULT_PAGE,
                                                       [FromQuery] int pageSize = ApplicationModule.DEFAULT_SIZE)
@@ -18,7 +18,7 @@ namespace Courses.API.Endpoints.Courses
             if(courses is null)
                 return TypedResults.NotFound();
 
-            var result = courses.Select(GetAllCourseDTO.MapFromEntity).ToList();
+            var result = courses.Select(GetCourseDTO.MapFromEntity).ToList();
             return TypedResults.Ok(result);
         }
     }
