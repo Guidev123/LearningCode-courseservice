@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Endpoints\Modules\**" />
+    <Content Remove="Endpoints\Modules\**" />
+    <EmbeddedResource Remove="Endpoints\Modules\**" />
+    <None Remove="Endpoints\Modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
@@ -15,10 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Courses.Data\Courses.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Endpoints\Modules\" />
   </ItemGroup>
 
 </Project>
