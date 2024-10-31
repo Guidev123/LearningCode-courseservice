@@ -15,7 +15,7 @@ namespace Courses.API.Endpoints.Courses
                                                       [FromQuery] int pageNumber = ApplicationModule.DEFAULT_PAGE,
                                                       [FromQuery] int pageSize = ApplicationModule.DEFAULT_SIZE)
         {
-            var courses = await courseRepository.GetAll(pageNumber, pageSize);
+            var courses = await courseRepository.GetAllAsync(pageNumber, pageSize);
             if(courses is null)
                 return TypedResults.NotFound(new Response<List<GetCourseDTO>>(null, 404, ResponseMessages.COURSE_NOT_FOUND.GetDescription()));
 

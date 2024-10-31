@@ -14,7 +14,7 @@ namespace Courses.API.Endpoints.Courses
         public static async Task<IResult> HandleAsync(ICourseRepository courseRepository,
                                                       Guid id)
         {
-            var course = await courseRepository.GetById(id);
+            var course = await courseRepository.GetByIdAsync(id);
             if (course is null)
                 return TypedResults.NotFound(new Response<GetCourseDTO>(null, 404, ResponseMessages.COURSE_NOT_FOUND.GetDescription()));
 

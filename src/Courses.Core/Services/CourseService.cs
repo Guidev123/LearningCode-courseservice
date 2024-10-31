@@ -25,7 +25,7 @@ namespace Courses.Core.Services
 
         public async Task<Response<Course?>> DeleteAsync(Guid id)
         {
-            var course = await _courseRepository.GetById(id);
+            var course = await _courseRepository.GetByIdAsync(id);
             if (course is null)
                 return new Response<Course?>(null, 404, ResponseMessages.COURSE_NOT_FOUND.GetDescription());
 
@@ -46,7 +46,7 @@ namespace Courses.Core.Services
             if (!validationResult.IsValid)
                 return new Response<Course?>(null, 400, ResponseMessages.INVALID_OPERATION.GetDescription(), errorMessages);
 
-            var oldCourse = await _courseRepository.GetById(id);
+            var oldCourse = await _courseRepository.GetByIdAsync(id);
             if(oldCourse is null)
                 return new Response<Course?>(null, 404, ResponseMessages.COURSE_NOT_FOUND.GetDescription());
 
