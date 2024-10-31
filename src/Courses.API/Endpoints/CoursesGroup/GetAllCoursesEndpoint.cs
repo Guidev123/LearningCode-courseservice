@@ -9,7 +9,7 @@ namespace Courses.API.Endpoints.CoursesEndpoint
 {
     public class GetAllCoursesEndpoint : IEndpoint
     {
-        public static void Map(IEndpointRouteBuilder app) => app.MapGet("/", HandleAsync).RequireAuthorization("Premium").Produces<Response<List<GetCourseDTO>>>();
+        public static void Map(IEndpointRouteBuilder app) => app.MapGet("/", HandleAsync).Produces<Response<List<GetCourseDTO>>>();
         public static async Task<IResult> HandleAsync(ICourseRepository courseRepository,
                                                       [FromQuery] int pageNumber = ApplicationModule.DEFAULT_PAGE,
                                                       [FromQuery] int pageSize = ApplicationModule.DEFAULT_SIZE)
