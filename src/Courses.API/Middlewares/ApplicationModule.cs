@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Courses.API.Middlewares
 {
@@ -30,6 +31,11 @@ namespace Courses.API.Middlewares
         public static void AddDocumentationConfig(this WebApplicationBuilder builder)
         {
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.ConfigureHttpJsonOptions(options =>
+            {
+                options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+            });
 
             builder.Services.AddSwaggerGen(c =>
             {

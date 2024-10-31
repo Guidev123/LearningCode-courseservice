@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Courses.Core.Entities;
+﻿namespace Courses.Core.Entities;
 
 public class Lesson : Entity
 {
@@ -14,7 +12,6 @@ public class Lesson : Entity
     public string Title { get; private set; } = string.Empty;
     public string LinkVideo { get; private set; } = string.Empty;
     public Guid ModuleId { get; private set; }
-    [JsonIgnore]
     public Module Module { get; private set; } = null!;
 
     public void UpdateLesson(string title, string linkvideo)
