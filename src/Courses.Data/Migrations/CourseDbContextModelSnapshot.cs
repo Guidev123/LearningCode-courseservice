@@ -48,7 +48,7 @@ namespace Courses.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses", (string)null);
+                    b.ToTable("Course", (string)null);
                 });
 
             modelBuilder.Entity("Courses.Core.Entities.Lesson", b =>
@@ -79,7 +79,7 @@ namespace Courses.Data.Migrations
 
                     b.HasIndex("ModuleId");
 
-                    b.ToTable("Lessons", (string)null);
+                    b.ToTable("Lesson", (string)null);
                 });
 
             modelBuilder.Entity("Courses.Core.Entities.Module", b =>
@@ -110,7 +110,7 @@ namespace Courses.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Modules", (string)null);
+                    b.ToTable("Module", (string)null);
                 });
 
             modelBuilder.Entity("Courses.Core.Entities.Lesson", b =>

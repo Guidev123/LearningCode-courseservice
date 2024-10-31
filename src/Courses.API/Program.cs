@@ -7,14 +7,9 @@ builder.Services.AddSwaggerGen();
 builder.AddCustomMiddlewares();
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.ConfigureDevEnvironment();
 
-app.UseHttpsRedirection();
-
+app.UseSecurity();
 app.MapEndpoints();
 
 app.Run();

@@ -13,7 +13,7 @@ public class Course : Entity
     public string Name { get; private set; } = string.Empty;
     public string Description { get; private set; } = string.Empty;
     public bool JustForPremium { get; private set; }
-    public IEnumerable<Module> Modules { get; private set; } = [];
+    public List<Module> Modules { get; private set; } = [];
 
     public void UpdateCourse(string name, string description, bool justForPremium)
     {

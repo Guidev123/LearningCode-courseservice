@@ -17,7 +17,13 @@ namespace Courses.Core.Responses.Messages
         [Description("Error: Course not found.")]
         COURSE_NOT_FOUND,
         [Description("Error: The course cannot be deleted because it has registered modules.")]
-        COURSE_CANNOT_BE_DELETED
+        COURSE_CANNOT_BE_DELETED,
+        [Description("Error: The module cannot be deleted because it has registered lessons")]
+        MODULE_CANNOT_BE_DELETED,
+        [Description("Error: Module not found")]
+        MODULE_NOT_FOUND,
+        [Description("Error: Lesson not found.")]
+        LESSON_NOT_FOUND,
     }
     public static class EnumExtensions
     {

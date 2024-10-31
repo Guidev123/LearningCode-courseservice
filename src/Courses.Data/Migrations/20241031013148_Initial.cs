@@ -12,7 +12,7 @@ namespace Courses.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Courses",
+                name: "Course",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -24,11 +24,11 @@ namespace Courses.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses", x => x.Id);
+                    table.PrimaryKey("PK_Course", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Modules",
+                name: "Module",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -40,17 +40,17 @@ namespace Courses.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Modules", x => x.Id);
+                    table.PrimaryKey("PK_Module", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Modules_Courses_CourseId",
+                        name: "FK_Module_Course_CourseId",
                         column: x => x.CourseId,
-                        principalTable: "Courses",
+                        principalTable: "Course",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Lessons",
+                name: "Lesson",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -62,23 +62,23 @@ namespace Courses.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lessons", x => x.Id);
+                    table.PrimaryKey("PK_Lesson", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Lessons_Modules_ModuleId",
+                        name: "FK_Lesson_Module_ModuleId",
                         column: x => x.ModuleId,
-                        principalTable: "Modules",
+                        principalTable: "Module",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Lessons_ModuleId",
-                table: "Lessons",
+                name: "IX_Lesson_ModuleId",
+                table: "Lesson",
                 column: "ModuleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Modules_CourseId",
-                table: "Modules",
+                name: "IX_Module_CourseId",
+                table: "Module",
                 column: "CourseId");
         }
 
@@ -86,13 +86,13 @@ namespace Courses.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Lessons");
+                name: "Lesson");
 
             migrationBuilder.DropTable(
-                name: "Modules");
+                name: "Module");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "Course");
         }
     }
 }

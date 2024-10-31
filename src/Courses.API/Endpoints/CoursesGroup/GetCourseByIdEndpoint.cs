@@ -1,15 +1,14 @@
-﻿
-using Courses.API.DTOs;
+﻿using Courses.API.DTOs;
 using Courses.Core.Entities;
 using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Responses;
 using Courses.Core.Responses.Messages;
 
-namespace Courses.API.Endpoints.Courses
+namespace Courses.API.Endpoints.CoursesEndpoint
 {
     public class GetCourseByIdEndpoint : IEndpoint
     {
-        public static void Map(IEndpointRouteBuilder app) => app.MapGet("/{id:guid}", HandleAsync).Produces<Response<GetCourseDTO?>>();
+        public static void Map(IEndpointRouteBuilder app) => app.MapGet("/{id:guid}", HandleAsync).RequireAuthorization("Premium").Produces<Response<GetCourseDTO?>>();
 
         public static async Task<IResult> HandleAsync(ICourseRepository courseRepository,
                                                       Guid id)

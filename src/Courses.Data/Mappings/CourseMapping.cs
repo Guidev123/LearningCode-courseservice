@@ -8,7 +8,7 @@ namespace Courses.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Course> builder)
         {
-            builder.ToTable("Courses");
+            builder.ToTable("Course");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired().HasColumnType("VARCHAR(50)");
             builder.Property(x => x.Description).IsRequired().HasColumnType("VARCHAR(255)");
