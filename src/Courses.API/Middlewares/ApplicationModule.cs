@@ -32,11 +32,6 @@ namespace Courses.API.Middlewares
         {
             builder.Services.AddEndpointsApiExplorer();
 
-            builder.Services.ConfigureHttpJsonOptions(options =>
-            {
-                options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-            });
-
             builder.Services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo()
