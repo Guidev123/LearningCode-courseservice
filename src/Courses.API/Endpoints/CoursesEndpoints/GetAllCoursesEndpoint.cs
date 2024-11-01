@@ -5,7 +5,7 @@ using Courses.Core.Responses;
 using Courses.Core.Responses.Messages;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Courses.API.Endpoints.CoursesEndpoint
+namespace Courses.API.Endpoints.CoursesEndpoints
 {
     public class GetAllCoursesEndpoint : IEndpoint
     {

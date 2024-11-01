@@ -3,18 +3,18 @@ using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Interfaces.Services;
 using Courses.Core.Responses;
 
-namespace Courses.API.Endpoints.ModulesGroup
+namespace Courses.API.Endpoints.CoursesEndpoints
 {
-    public class UpdateModuleEndpoint : IEndpoint
+    public class UpdateCourseEndpoint : IEndpoint
     {
         public static void Map(IEndpointRouteBuilder app) => app.MapPut("/{id:guid}", HandleAsync).RequireAuthorization("Admin").Produces<IResult>();
 
-        public static async Task<IResult> HandleAsync(IModuleService moduleService,
+        public static async Task<IResult> HandleAsync(ICourseService courseService,
                                                       IUnitOfWork unitOfWork,
-                                                      ModuleDTO moduleDTO,
+                                                      CourseDTO courseDTO,
                                                       Guid id)
         {
-            var result = await moduleService.UpdateAsync(moduleDTO.MapToEntity(moduleDTO), id);
+            var result = await courseService.UpdateAsync(courseDTO.MapToEntity(courseDTO), id);
             return result.IsSuccess && await unitOfWork.CommitAsync()
                                     ? TypedResults.NoContent()
                                     : TypedResults.BadRequest(result);

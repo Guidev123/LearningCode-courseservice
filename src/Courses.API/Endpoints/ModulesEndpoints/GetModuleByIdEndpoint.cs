@@ -3,7 +3,7 @@ using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Responses;
 using Courses.Core.Responses.Messages;
 
-namespace Courses.API.Endpoints.ModulesGroup
+namespace Courses.API.Endpoints.ModulesEndpoints
 {
     public class GetModuleByIdEndpoint : IEndpoint
     {

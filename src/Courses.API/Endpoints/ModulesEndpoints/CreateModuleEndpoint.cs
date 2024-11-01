@@ -4,16 +4,16 @@ using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Interfaces.Services;
 using Courses.Core.Responses;
 
-namespace Courses.API.Endpoints.LessonsGroup
+namespace Courses.API.Endpoints.ModulesEndpoints
 {
-    public class CreateLessonEndpoint : IEndpoint
+    public class CreateModuleEndpoint : IEndpoint
     {
         public static void Map(IEndpointRouteBuilder app) => app.MapPost("/", HandleAsync).RequireAuthorization("Admin").Produces<IResult>();
-        public static async Task<IResult> HandleAsync(ILessonService lessonService,
+        public static async Task<IResult> HandleAsync(IModuleService moduleService,
                                                       IUnitOfWork unitOfWork,
-                                                      LessonDTO lessonDTO)
+                                                      ModuleDTO moduleDTO)
         {
-            var result = await lessonService.CreateAsync(lessonDTO.MapToEntity(lessonDTO));
+            var result = await moduleService.CreateAsync(moduleDTO.MapToEntity(moduleDTO));
             return result.IsSuccess && await unitOfWork.CommitAsync()
                                     ? TypedResults.Created()
                                     : TypedResults.BadRequest(result);

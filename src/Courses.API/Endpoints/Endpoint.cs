@@ -1,7 +1,6 @@
-﻿using Courses.API.Endpoints.CoursesEndpoint;
-using Courses.API.Endpoints.LessonsGroup;
-using Courses.API.Endpoints.ModulesEndpoint;
-using Courses.API.Endpoints.ModulesGroup;
+﻿using Courses.API.Endpoints.CoursesEndpoints;
+using Courses.API.Endpoints.LessonsEndpoints;
+using Courses.API.Endpoints.ModulesEndpoints;
 
 namespace Courses.API.Endpoints
 {

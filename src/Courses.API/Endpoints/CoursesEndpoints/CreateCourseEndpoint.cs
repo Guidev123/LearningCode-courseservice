@@ -4,7 +4,7 @@ using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Interfaces.Services;
 using Courses.Core.Responses;
 
-namespace Courses.API.Endpoints.CoursesEndpoint
+namespace Courses.API.Endpoints.CoursesEndpoints
 {
     public class CreateCourseEndpoint : IEndpoint
     {

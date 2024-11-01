@@ -3,7 +3,7 @@ using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Responses;
 using Courses.Core.Responses.Messages;
 
-namespace Courses.API.Endpoints.LessonsGroup
+namespace Courses.API.Endpoints.LessonsEndpoints
 {
     public class GetLessonByIdEndpoint : IEndpoint
     {

@@ -3,21 +3,20 @@ using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Interfaces.Services;
 using Courses.Core.Responses;
 
-namespace Courses.API.Endpoints.CoursesEndpoint
+namespace Courses.API.Endpoints.CoursesEndpoints
 {
-    public class UpdateCourseEndpoint : IEndpoint
+    public class DeleteCourseEndpoint : IEndpoint
     {
-        public static void Map(IEndpointRouteBuilder app) => app.MapPut("/{id:guid}", HandleAsync).RequireAuthorization("Admin").Produces<IResult>();
+        public static void Map(IEndpointRouteBuilder app) => app.MapDelete("/{id:guid}", HandleAsync).RequireAuthorization("Admin").Produces<IResult>();
 
         public static async Task<IResult> HandleAsync(ICourseService courseService,
                                                       IUnitOfWork unitOfWork,
-                                                      CourseDTO courseDTO,
                                                       Guid id)
         {
-            var result = await courseService.UpdateAsync(courseDTO.MapToEntity(courseDTO), id);
+            var result = await courseService.DeleteAsync(id);
             return result.IsSuccess && await unitOfWork.CommitAsync()
                                     ? TypedResults.NoContent()
-                                    : TypedResults.BadRequest(result);
+                                    : TypedResults.BadRequest();
         }
     }
 }
