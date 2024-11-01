@@ -5,7 +5,7 @@ using Courses.Core.Interfaces.Services;
 using Courses.Core.Responses;
 using Courses.Core.Responses.Messages;
 
-namespace Courses.Core.Services
+namespace Courses.API.Services
 {
     public class ModuleService(IModuleRepository moduleRepository) : IModuleService
     {

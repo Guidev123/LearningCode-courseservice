@@ -1,6 +1,6 @@
-﻿using Courses.Core.Interfaces.Repositories;
+﻿using Courses.API.Services;
+using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Interfaces.Services;
-using Courses.Core.Services;
 using Courses.Data;
 using Courses.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
