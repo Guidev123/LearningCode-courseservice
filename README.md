@@ -10,6 +10,7 @@
 
 <img src="https://github.com/user-attachments/assets/88712ed5-8b3e-474f-ad47-d644df8df6e0" alt="API Endpoints Image">
 
+
 <h3>Courses</h3>
 <ul>
   <li><strong>GET /api/v1/courses</strong> - Returns a paginated list of courses. Requires query params <code>pageNumber</code> and <code>pageSize</code>. (Role: Premium)</li>
