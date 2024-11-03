@@ -13,10 +13,10 @@ namespace Courses.API.Services
         public async Task<Response<Module?>> CreateAsync(Module module)
         {
             var validationResult = new ModuleValidation().Validate(module);
-            var errorMessages = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
 
             if (!validationResult.IsValid)
-                return new Response<Module?>(null, 400, ResponseMessages.VALID_OPERATION.GetDescription(), errorMessages);
+                return new Response<Module?>(null, 400, errors);
 
             await _moduleRepository.CreateAsync(module);
 
@@ -41,10 +41,10 @@ namespace Courses.API.Services
         public async Task<Response<Module?>> UpdateAsync(Module module, Guid id)
         {
             var validationResult = new ModuleValidation().Validate(module);
-            var errorMessages = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
 
             if (!validationResult.IsValid)
-                return new Response<Module?>(null, 400, ResponseMessages.VALID_OPERATION.GetDescription(), errorMessages);
+                return new Response<Module?>(null, 400, errors);
 
             var oldModule = await _moduleRepository.GetByIdAsync(id);
             if (oldModule is null)

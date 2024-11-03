@@ -13,10 +13,10 @@ namespace Courses.API.Services
         public async Task<Response<Course?>> CreateAsync(Course course)
         {
             var validationResult = new CourseValidation().Validate(course);
-            var errorMessages = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
 
             if (!validationResult.IsValid)
-                return new Response<Course?>(null, 400, ResponseMessages.VALID_OPERATION.GetDescription(), errorMessages);
+                return new Response<Course?>(null, 400, errors);
 
             await _courseRepository.CreateAsync(course);
 
@@ -41,10 +41,9 @@ namespace Courses.API.Services
         public async Task<Response<Course?>> UpdateAsync(Course course, Guid id)
         {
             var validationResult = new CourseValidation().Validate(course);
-            var errorMessages = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
-
+            var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
             if (!validationResult.IsValid)
-                return new Response<Course?>(null, 400, ResponseMessages.INVALID_OPERATION.GetDescription(), errorMessages);
+                return new Response<Course?>(null, 400, errors);
 
             var oldCourse = await _courseRepository.GetByIdAsync(id);
             if (oldCourse is null)
