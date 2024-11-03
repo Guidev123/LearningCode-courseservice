@@ -103,7 +103,8 @@ namespace Courses.API.Middlewares
                 };
             });
 
-            builder.Services.AddAuthorization();
+            builder.Services.AddAuthorizationBuilder()
+                .AddPolicy("Admin", policy => policy.RequireRole("Admin"));
         }
         public static void ConfigureDevEnvironment(this WebApplication app)
         {
