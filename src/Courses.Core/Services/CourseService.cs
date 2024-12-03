@@ -5,7 +5,7 @@ using Courses.Core.Interfaces.Services;
 using Courses.Core.Responses;
 using Courses.Core.Responses.Messages;
 
-namespace Courses.API.Services
+namespace Courses.Core.Services
 {
     public class CourseService(ICourseRepository courseRepository) : ICourseService
     {

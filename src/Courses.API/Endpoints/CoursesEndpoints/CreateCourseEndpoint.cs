@@ -1,8 +1,6 @@
 ﻿using Courses.API.DTOs;
-using Courses.Core.Entities;
 using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Interfaces.Services;
-using Courses.Core.Responses;
 
 namespace Courses.API.Endpoints.CoursesEndpoints
 {

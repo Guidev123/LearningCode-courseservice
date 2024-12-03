@@ -5,7 +5,7 @@ using Courses.Core.Interfaces.Services;
 using Courses.Core.Responses;
 using Courses.Core.Responses.Messages;
 
-namespace Courses.API.Services
+namespace Courses.Core.Services
 {
     public class LessonService(ILessonRepository lessonRepository) : ILessonService
     {
@@ -13,10 +13,10 @@ namespace Courses.API.Services
         public async Task<Response<Lesson?>> CreateAsync(Lesson lesson)
         {
             var validationResult = new LessonValidation().Validate(lesson);
-            var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
+            string[] errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
 
             if (!validationResult.IsValid)
-                return new Response<Lesson?>(null, 400, errors);
+                return new Response<Lesson?>(null, 400, ResponseMessages.INVALID_OPERATION.GetDescription(), errors);
 
             await _lessonRepository.CreateAsync(lesson);
 
@@ -38,10 +38,10 @@ namespace Courses.API.Services
         public async Task<Response<Lesson?>> UpdateAsync(Lesson lesson, Guid id)
         {
             var validationResult = new LessonValidation().Validate(lesson);
-            var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
+            string[] errors = validationResult.Errors.Select(e => e.ErrorMessage).ToArray();
 
             if (!validationResult.IsValid)
-                return new Response<Lesson?>(null, 400, errors);
+                return new Response<Lesson?>(null, 400, ResponseMessages.INVALID_OPERATION.GetDescription(), errors);
 
             var oldLesson = await _lessonRepository.GetByIdAsync(id);
             if (oldLesson is null)
