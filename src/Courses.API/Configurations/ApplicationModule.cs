@@ -10,14 +10,14 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace Courses.API.Middlewares
+namespace Courses.API.Configurations
 {
     public static class ApplicationModule
     {
         public const int DEFAULT_PAGE = 1;
         public const int DEFAULT_SIZE = 25;
 
-        public static void AddCustomMiddlewares(this WebApplicationBuilder builder)
+        public static void AddConfigurations(this WebApplicationBuilder builder)
         {
             builder.AddDbContextConfig();
             builder.AddDocumentationConfig();
@@ -72,7 +72,7 @@ namespace Courses.API.Middlewares
             builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddTransient<ICourseService, CourseService>();
-            builder.Services.AddTransient<ICourseRepository, CourseRepository>();   
+            builder.Services.AddTransient<ICourseRepository, CourseRepository>();
 
             builder.Services.AddTransient<IModuleRepository, ModuleRepository>();
             builder.Services.AddTransient<IModuleService, ModuleService>();

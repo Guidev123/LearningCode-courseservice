@@ -1,5 +1,5 @@
-﻿using Courses.API.DTOs;
-using Courses.API.Middlewares;
+﻿using Courses.API.Configurations;
+using Courses.API.DTOs;
 using Courses.Core.Interfaces.Repositories;
 using Courses.Core.Responses;
 using Courses.Core.Responses.Messages;

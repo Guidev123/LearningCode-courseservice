@@ -1,10 +1,10 @@
+using Courses.API.Configurations;
 using Courses.API.Endpoints;
-using Courses.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.AddCustomMiddlewares();
+builder.AddConfigurations();
 var app = builder.Build();
 
 app.ConfigureDevEnvironment();
