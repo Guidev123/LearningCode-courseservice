@@ -69,15 +69,15 @@ namespace Courses.API.Configurations
 
         public static void RegisterServices(this WebApplicationBuilder builder)
         {
-            builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddTransient<ICourseService, CourseService>();
-            builder.Services.AddTransient<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 
-            builder.Services.AddTransient<IModuleRepository, ModuleRepository>();
+            builder.Services.AddScoped<IModuleRepository, ModuleRepository>();
             builder.Services.AddTransient<IModuleService, ModuleService>();
 
-            builder.Services.AddTransient<ILessonRepository, LessonRepository>();
+            builder.Services.AddScoped<ILessonRepository, LessonRepository>();
             builder.Services.AddTransient<ILessonService, LessonService>();
         }
 
